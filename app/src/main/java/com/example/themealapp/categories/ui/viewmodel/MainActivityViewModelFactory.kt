@@ -1,9 +1,9 @@
-package com.example.themealapp.ui.viewmodel
+package com.example.themealapp.categories.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.themealapp.background.datasource.MealDatasource
-import com.example.themealapp.background.repository.MealRepository
+import com.example.themealapp.categories.background.datasource.MealDatasource
+import com.example.themealapp.categories.background.repository.MealRepository
 
 class MainActivityViewModelFactory : ViewModelProvider.Factory {
 

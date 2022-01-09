@@ -1,8 +1,8 @@
-package com.example.themealapp.background.repository
+package com.example.themealapp.categories.background.repository
 
 import androidx.lifecycle.LiveData
-import com.example.themealapp.background.datasource.MealDatasource
-import com.example.themealapp.background.response.CategoriesResponse
+import com.example.themealapp.categories.background.datasource.MealDatasource
+import com.example.themealapp.categories.background.response.CategoriesResponse
 
 class MealRepository(private val mDataSource: MealDatasource) {
 

@@ -1,4 +1,4 @@
-package com.example.themealapp.background.response
+package com.example.themealapp.categories.background.response
 
 import android.os.Parcelable
 import com.squareup.moshi.Json

@@ -1,9 +1,9 @@
-package com.example.themealapp.background.datasource
+package com.example.themealapp.categories.background.datasource
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.themealapp.background.MealApi
-import com.example.themealapp.background.response.CategoriesResponse
+import com.example.themealapp.categories.background.MealApi
+import com.example.themealapp.categories.background.response.CategoriesResponse
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

@@ -1,9 +1,9 @@
-package com.example.themealapp.ui.viewmodel
+package com.example.themealapp.categories.ui.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.example.themealapp.background.repository.MealRepository
-import com.example.themealapp.background.response.CategoriesResponse
+import com.example.themealapp.categories.background.repository.MealRepository
+import com.example.themealapp.categories.background.response.CategoriesResponse
 
 class MainActivityViewModel(private val mRepository: MealRepository): ViewModel() {
 

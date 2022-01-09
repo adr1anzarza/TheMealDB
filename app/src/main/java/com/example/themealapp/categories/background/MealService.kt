@@ -1,12 +1,8 @@
-package com.example.themealapp.background
+package com.example.themealapp.categories.background
 
 import com.example.themealapp.BuildConfig
-import com.example.themealapp.background.response.CategoriesResponse
+import com.example.themealapp.categories.background.response.CategoriesResponse
 import com.example.themealapp.utils.GsonUtils
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import kotlinx.coroutines.Deferred
 import okhttp3.OkHttpClient
 import okhttp3.internal.platform.Platform
 import com.ihsanbal.logging.LoggingInterceptor
@@ -15,8 +11,8 @@ import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Query
 import java.util.concurrent.TimeUnit
 
 private const val BASE_URL = "https://www.themealdb.com/api/json/v1/1/"
@@ -63,6 +59,9 @@ interface ServiceDefinition {
 
     @GET("categories.php")
     fun getCategoriesAsync(): Call<CategoriesResponse>
+
+    @GET("filter.php")
+    fun getCategoriesMeals(@Query("c") category: String): Call<ResponseBody>
 }
 
 object MealApi {

@@ -1,4 +1,4 @@
-package com.example.themealapp.ui
+package com.example.themealapp.categories.ui
 
 import android.widget.ImageView
 import android.widget.TextView
@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.themealapp.R
-import com.example.themealapp.background.response.Category
+import com.example.themealapp.categories.background.response.Category
 
 
 @BindingAdapter("listData")

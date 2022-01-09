@@ -1,4 +1,4 @@
-package com.example.themealapp.ui
+package com.example.themealapp.categories.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,8 +6,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.themealapp.R
 import com.example.themealapp.databinding.ActivityMainBinding
-import com.example.themealapp.ui.viewmodel.MainActivityViewModel
-import com.example.themealapp.ui.viewmodel.MainActivityViewModelFactory
+import com.example.themealapp.categories.ui.viewmodel.MainActivityViewModel
+import com.example.themealapp.categories.ui.viewmodel.MainActivityViewModelFactory
 
 class MainActivity : AppCompatActivity() {
 

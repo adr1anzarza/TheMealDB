@@ -1,4 +1,4 @@
-package com.example.themealapp.background.response
+package com.example.themealapp.categories.background.response
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable

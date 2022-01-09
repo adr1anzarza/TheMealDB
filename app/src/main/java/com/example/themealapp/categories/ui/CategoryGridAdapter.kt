@@ -1,11 +1,11 @@
-package com.example.themealapp.ui
+package com.example.themealapp.categories.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.themealapp.background.response.Category
+import com.example.themealapp.categories.background.response.Category
 import com.example.themealapp.databinding.GridCategoryItemBinding
 
 class CategoryGridAdapter(val onClickListener: OnClickListener ) :

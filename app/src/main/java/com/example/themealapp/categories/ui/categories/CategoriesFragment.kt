@@ -1,4 +1,4 @@
-package com.example.themealapp.ui.categories
+package com.example.themealapp.categories.ui.categories
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,13 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.themealapp.R
 import com.example.themealapp.databinding.FragmentCategoriesBinding
-import com.example.themealapp.ui.CategoryGridAdapter
-import com.example.themealapp.ui.viewmodel.MainActivityViewModel
-import com.example.themealapp.ui.viewmodel.MainActivityViewModelFactory
+import com.example.themealapp.categories.ui.CategoryGridAdapter
+import com.example.themealapp.categories.ui.viewmodel.MainActivityViewModel
+import com.example.themealapp.categories.ui.viewmodel.MainActivityViewModelFactory
 
 class CategoriesFragment : Fragment() {
 

@@ -6,13 +6,13 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.themealapp.ui.viewmodel.MainActivityViewModel" />
+            type="com.example.themealapp.categories.ui.viewmodel.MainActivityViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.MainActivity">
+        tools:context=".categories.ui.MainActivity">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/photos_grid"
