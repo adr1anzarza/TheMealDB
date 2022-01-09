@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.themealapp.R
 import com.example.themealapp.databinding.FragmentCategoriesBinding
@@ -37,9 +38,6 @@ class CategoriesFragment : Fragment() {
         mBinding.lifecycleOwner = this
 
         mBinding.photosGrid.adapter = mAdapter
-
-        val manager = LinearLayoutManager(requireContext())
-        mBinding.photosGrid.layoutManager = manager
 
         mViewModel.mCategoriesList.observe(viewLifecycleOwner, { response ->
             if(!response.categories.isNullOrEmpty()){
