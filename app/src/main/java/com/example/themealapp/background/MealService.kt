@@ -11,6 +11,7 @@ import okhttp3.OkHttpClient
 import okhttp3.internal.platform.Platform
 import com.ihsanbal.logging.LoggingInterceptor
 import com.ihsanbal.logging.Level
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
