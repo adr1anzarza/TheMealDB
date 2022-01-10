@@ -75,6 +75,19 @@ fun categoryLabelMeal(textView: TextView, label: String?) {
     }
 }
 
+@BindingAdapter("bannerMeal")
+fun bannerMeal(imgView: ImageView, category: Category?) {
+    category?.let {
+        val imgUri = category.strCategoryThumb!!.toUri().buildUpon().scheme("https").build()
+        Glide.with(imgView.context)
+            .load(imgUri)
+            .apply(RequestOptions()
+                .placeholder(R.drawable.loading_animation)
+                .error(R.drawable.ic_broken_image))
+            .into(imgView)
+    }
+}
+
 //endregion Meals by category
 
 //region meal detail

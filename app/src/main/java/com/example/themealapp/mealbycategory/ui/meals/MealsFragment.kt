@@ -40,6 +40,7 @@ class MealsFragment : Fragment() {
         val application = requireNotNull(activity).application
         val selectedCategory = MealsFragmentArgs.fromBundle(requireArguments()).selectedCategory
 
+        mViewModel.setCategorySelected(selectedCategory)
         mViewModel.getMealsByCategory(selectedCategory.strCategory!!)
 
         mAdapter = MealsAdapter(MealsAdapter.OnClickListener{

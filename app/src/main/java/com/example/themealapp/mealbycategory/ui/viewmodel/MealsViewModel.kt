@@ -3,6 +3,7 @@ package com.example.themealapp.mealbycategory.ui.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.themealapp.categories.background.response.Category
 import com.example.themealapp.mealbycategory.background.repository.MealsCategoryRepository
 import com.example.themealapp.mealbycategory.background.response.Meal
 import com.example.themealapp.mealbycategory.background.response.MealDetailResponse
@@ -12,6 +13,9 @@ class MealsViewModel(private val mRepository: MealsCategoryRepository): ViewMode
 
     val mMealsList: LiveData<MealsResponse> = mRepository.mMeals
     val mMealDetail: LiveData<MealDetailResponse> = mRepository.mMealDetail
+
+    private val _categorySelected = MutableLiveData<Category>()
+    val mCategorySelected: LiveData<Category> = _categorySelected
 
     private val _navigateToSelectedMeal = MutableLiveData<Meal>()
 
@@ -32,6 +36,10 @@ class MealsViewModel(private val mRepository: MealsCategoryRepository): ViewMode
 
     fun displayMealDetailsComplete() {
         _navigateToSelectedMeal.value = null
+    }
+
+    fun setCategorySelected(category: Category){
+        _categorySelected.value = category
     }
 
 }
