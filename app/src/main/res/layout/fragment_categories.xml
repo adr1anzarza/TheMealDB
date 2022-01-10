@@ -37,14 +37,14 @@
                     app:layout_constraintHeight_percent="1"
                     android:adjustViewBounds="true"
                     android:scaleType="fitXY"
-                    bannerMeal="@{viewModel.MCategorySelected}"
+                    randomBanner="@{viewModel.MRandomMeals}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:src="@tools:sample/backgrounds/scenic" />
 
                 <TextView
-                    categoryLabelMeal="@{viewModel.MCategorySelected.strCategory}"
+                    randomLabel="@{viewModel.MRandomMeals}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_8dp"

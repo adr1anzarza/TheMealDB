@@ -20,6 +20,7 @@ class MainActivityViewModel(private val mRepository: MealRepository): ViewModel(
 
     init {
         getCategories()
+        getRandomMeals()
     }
 
     private fun getCategories() {

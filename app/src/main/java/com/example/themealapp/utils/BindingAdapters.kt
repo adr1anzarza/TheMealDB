@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.themealapp.R
 import com.example.themealapp.categories.background.response.Category
+import com.example.themealapp.categories.background.response.RandomMealResponse
 import com.example.themealapp.categories.ui.CategoryGridAdapter
 import com.example.themealapp.mealbycategory.background.response.Meal
 import com.example.themealapp.mealbycategory.background.response.MealDetailResponse
@@ -41,6 +42,36 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
 fun categoryLabel(textView: TextView, label: String?) {
     label?.let {
         textView.text = label ?: ""
+    }
+}
+
+
+@BindingAdapter("randomBanner")
+fun randomBanner(imgView: ImageView, randomMeal: LiveData<RandomMealResponse>?) {
+    randomMeal?.let {
+        val imgUri = if (randomMeal.value?.meals?.size ?: 0 >= 1){
+            randomMeal.value?.meals?.get(0)?.strMealThumb?.toUri()?.buildUpon()?.scheme("https")?.build()
+        } else {
+            ""
+        }
+
+        Glide.with(imgView.context)
+            .load(imgUri)
+            .apply(RequestOptions()
+                .placeholder(R.drawable.loading_animation)
+                .error(R.drawable.ic_broken_image))
+            .into(imgView)
+    }
+}
+
+@BindingAdapter("randomLabel")
+fun randomLabel(textView: TextView, randomMeal: LiveData<RandomMealResponse>?) {
+    randomMeal?.let {
+        textView.text = if (randomMeal.value?.meals?.size ?: 0 >= 1){
+            randomMeal.value?.meals?.get(0)?.strCategory
+        } else {
+            ""
+        }
     }
 }
 
