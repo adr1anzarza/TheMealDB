@@ -2,11 +2,13 @@ package com.example.themealapp.utils
 
 import com.example.themealapp.BuildConfig
 import com.example.themealapp.categories.background.response.CategoriesResponse
+import com.example.themealapp.mealbycategory.background.response.MealDetailResponse
 import com.example.themealapp.mealbycategory.background.response.MealsResponse
 import okhttp3.OkHttpClient
 import okhttp3.internal.platform.Platform
 import com.ihsanbal.logging.LoggingInterceptor
 import com.ihsanbal.logging.Level
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -61,6 +63,9 @@ interface ServiceDefinition {
 
     @GET("filter.php")
     fun getCategoriesMeals(@Query("c") category: String): Call<MealsResponse>
+
+    @GET("lookup.php")
+    fun getMealDetail(@Query("i") id: String): Call<MealDetailResponse>
 }
 
 object MealApi {
