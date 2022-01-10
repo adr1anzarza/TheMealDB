@@ -7,8 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.themealapp.R
 import com.example.themealapp.categories.ui.CategoryGridAdapter
+import com.example.themealapp.categories.ui.categories.CategoriesFragmentDirections
 import com.example.themealapp.categories.ui.viewmodel.MainActivityViewModel
 import com.example.themealapp.categories.ui.viewmodel.MainActivityViewModelFactory
 import com.example.themealapp.databinding.ActivityMainBinding
@@ -41,7 +43,7 @@ class MealsFragment : Fragment() {
         mViewModel.getMealsByCategory(selectedCategory.strCategory!!)
 
         mAdapter = MealsAdapter(MealsAdapter.OnClickListener{
-
+            mViewModel.displayMealDetails(it)
         })
 
         mBinding.photosGrid.adapter = mAdapter
@@ -49,6 +51,13 @@ class MealsFragment : Fragment() {
         mViewModel.mMealsList.observe(viewLifecycleOwner, { response ->
             if(!response.meals.isNullOrEmpty()){
                 mAdapter.submitList(response.meals)
+            }
+        })
+
+        mViewModel.navigateToSelectedMeal.observe(viewLifecycleOwner, {
+            if ( null != it ) {
+                this.findNavController().navigate(MealsFragmentDirections.actionMealsFragmentToMealDetailFragment(it))
+                mViewModel.displayMealDetailsComplete()
             }
         })
 

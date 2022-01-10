@@ -12,10 +12,11 @@ import com.example.themealapp.R
 import com.example.themealapp.categories.background.response.Category
 import com.example.themealapp.categories.ui.CategoryGridAdapter
 import com.example.themealapp.mealbycategory.background.response.Meal
+import com.example.themealapp.mealbycategory.background.response.MealDetailResponse
 import com.example.themealapp.mealbycategory.background.response.MealsResponse
 import com.example.themealapp.mealbycategory.ui.MealsAdapter
 
-
+//region categories
 @BindingAdapter("listData")
 fun bindRecyclerView(recyclerView: RecyclerView, data: ArrayList<Category>?) {
     val adapter = recyclerView.adapter as CategoryGridAdapter
@@ -43,6 +44,9 @@ fun categoryLabel(textView: TextView, label: String?) {
     }
 }
 
+//endregion categories
+
+//region Meals by category
 @BindingAdapter("listMeals")
 fun listMeals(recyclerView: RecyclerView, mMealsList: LiveData<MealsResponse>?) {
     val adapter = recyclerView.adapter as MealsAdapter
@@ -70,3 +74,50 @@ fun categoryLabelMeal(textView: TextView, label: String?) {
         textView.text = label ?: ""
     }
 }
+
+//endregion Meals by category
+
+//region meal detail
+@BindingAdapter("imageUrlMealDetail")
+fun imageUrlMealDetail(imgView: ImageView, mMealDetail: LiveData<MealDetailResponse>) {
+    mMealDetail.let {
+        val imgUri = mMealDetail.value?.meals?.get(0)?.strMealThumb?.toUri()?.buildUpon()?.scheme("https")
+            ?.build()
+        Glide.with(imgView.context)
+            .load(imgUri)
+            .apply(RequestOptions()
+                .placeholder(R.drawable.loading_animation)
+                .error(R.drawable.ic_broken_image))
+            .into(imgView)
+    }
+}
+
+@BindingAdapter("mealDetailLabel")
+fun mealDetailLabel(textView: TextView, mMealDetail: LiveData<MealDetailResponse>) {
+    mMealDetail.let {
+        textView.text = mMealDetail.value?.meals?.get(0)?.strMeal
+    }
+}
+
+@BindingAdapter("mealDetailCategoryLabel")
+fun mealDetailCategoryLabel(textView: TextView, mMealDetail: LiveData<MealDetailResponse>) {
+    mMealDetail.let {
+        textView.text = mMealDetail.value?.meals?.get(0)?.strCategory
+    }
+}
+
+@BindingAdapter("mealOriginLabel")
+fun mealOriginLabel(textView: TextView, mMealDetail: LiveData<MealDetailResponse>) {
+    mMealDetail.let {
+        textView.text = mMealDetail.value?.meals?.get(0)?.strArea
+    }
+}
+
+@BindingAdapter("mealInstructions")
+fun mealInstructions(textView: TextView, mMealDetail: LiveData<MealDetailResponse>) {
+    mMealDetail.let {
+        textView.text = mMealDetail.value?.meals?.get(0)?.strInstructions
+    }
+}
+
+//endregion meal detail

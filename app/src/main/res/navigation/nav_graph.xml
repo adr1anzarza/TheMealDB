@@ -14,6 +14,7 @@
             android:id="@+id/action_categoryFragment_to_mealsFragment"
             app:destination="@id/mealsFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/mealsFragment"
         android:name="com.example.themealapp.mealbycategory.ui.meals.MealsFragment"
@@ -22,6 +23,20 @@
         <argument
             android:name="selectedCategory"
             app:argType="com.example.themealapp.categories.background.response.Category"
+            />
+        <action
+            android:id="@+id/action_mealsFragment_to_mealDetailFragment"
+            app:destination="@id/mealDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/mealDetailFragment"
+        android:name="com.example.themealapp.mealbycategory.ui.mealdetail.MealDetailFragment"
+        android:label="MealDetailFragment"
+        tools:layout="@layout/fragment_meal_detail">
+        <argument
+            android:name="selectedMeal"
+            app:argType="com.example.themealapp.mealbycategory.background.response.Meal"
             />
     </fragment>
 
