@@ -2,6 +2,7 @@ package com.example.themealapp.utils
 
 import com.example.themealapp.BuildConfig
 import com.example.themealapp.categories.background.response.CategoriesResponse
+import com.example.themealapp.categories.background.response.RandomMealResponse
 import com.example.themealapp.mealbycategory.background.response.MealDetailResponse
 import com.example.themealapp.mealbycategory.background.response.MealsResponse
 import okhttp3.OkHttpClient
@@ -66,6 +67,9 @@ interface ServiceDefinition {
 
     @GET("lookup.php")
     fun getMealDetail(@Query("i") id: String): Call<MealDetailResponse>
+
+    @GET("random.php")
+    fun getRandomMeal(): Call<RandomMealResponse>
 }
 
 object MealApi {
