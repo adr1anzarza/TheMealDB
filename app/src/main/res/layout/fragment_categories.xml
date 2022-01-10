@@ -14,17 +14,72 @@
         android:layout_height="match_parent"
         tools:context=".categories.ui.MainActivity">
 
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="@dimen/_0dp"
+            android:layout_margin="@dimen/_16dp"
+            android:elevation="@dimen/_4dp"
+            app:cardCornerRadius="@dimen/_8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/mars_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_0dp"
+                    app:layout_constraintHeight_percent="1"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    bannerMeal="@{viewModel.MCategorySelected}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@tools:sample/backgrounds/scenic" />
+
+                <TextView
+                    categoryLabelMeal="@{viewModel.MCategorySelected.strCategory}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_8dp"
+                    android:padding="@dimen/_4dp"
+                    android:shadowColor="@color/text_shadow"
+                    android:shadowDx="4"
+                    android:shadowDy="4"
+                    android:shadowRadius="4"
+                    android:textColor="@color/white"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintVertical_bias="0.95"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Beef" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/photos_grid"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="6dp"
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="@dimen/_0dp"
             android:clipToPadding="false"
+            android:padding="6dp"
+            android:layout_marginTop="@dimen/_8dp"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView"
             app:listData="@{viewModel.MCategoriesList.categories}"
             app:spanCount="2"
             tools:itemCount="16"
