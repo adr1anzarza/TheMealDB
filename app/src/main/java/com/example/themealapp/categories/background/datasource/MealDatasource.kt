@@ -2,7 +2,7 @@ package com.example.themealapp.categories.background.datasource
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.themealapp.categories.background.MealApi
+import com.example.themealapp.utils.MealApi
 import com.example.themealapp.categories.background.response.CategoriesResponse
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

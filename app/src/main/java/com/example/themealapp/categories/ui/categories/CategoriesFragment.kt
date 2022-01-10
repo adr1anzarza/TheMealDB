@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.themealapp.R
 import com.example.themealapp.databinding.FragmentCategoriesBinding
 import com.example.themealapp.categories.ui.CategoryGridAdapter
@@ -30,7 +31,7 @@ class CategoriesFragment : Fragment() {
         mBinding.viewModel = mViewModel
 
         mAdapter = CategoryGridAdapter(CategoryGridAdapter.OnClickListener{
-
+            mViewModel.displayPropertyDetails(it)
         })
 
         mBinding.lifecycleOwner = this
@@ -40,6 +41,13 @@ class CategoriesFragment : Fragment() {
         mViewModel.mCategoriesList.observe(viewLifecycleOwner, { response ->
             if(!response.categories.isNullOrEmpty()){
                 mAdapter.submitList(response.categories)
+            }
+        })
+
+        mViewModel.navigateToSelectedProperty.observe(viewLifecycleOwner, {
+            if ( null != it ) {
+                this.findNavController().navigate(CategoriesFragmentDirections.actionCategoryFragmentToMealsFragment(it))
+                mViewModel.displayPropertyDetailsComplete()
             }
         })
 
