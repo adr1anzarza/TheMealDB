@@ -70,6 +70,9 @@ interface ServiceDefinition {
 
     @GET("random.php")
     fun getRandomMeal(): Call<RandomMealResponse>
+
+    @GET("search.php")
+    fun getMealByLetter(@Query("f") id: String): Call<MealDetailResponse>
 }
 
 object MealApi {

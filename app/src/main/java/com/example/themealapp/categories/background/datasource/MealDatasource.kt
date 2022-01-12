@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.themealapp.utils.MealApi
 import com.example.themealapp.categories.background.response.CategoriesResponse
 import com.example.themealapp.categories.background.response.RandomMealResponse
+import com.example.themealapp.mealbycategory.background.response.MealDetailResponse
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -19,6 +20,9 @@ class MealDatasource {
 
     private val _randomMeals = MutableLiveData<RandomMealResponse>()
     val mRandomMealResponse: LiveData<RandomMealResponse> = _randomMeals
+
+    private val _mealsByLetter = MutableLiveData<MealDetailResponse>()
+    val mMealsByLetter: LiveData<MealDetailResponse> = _mealsByLetter
 
     fun getCategories() {
         CoroutineScope(Dispatchers.Default).launch {
@@ -51,6 +55,24 @@ class MealDatasource {
                 }
 
                 override fun onFailure(call: Call<RandomMealResponse>, t: Throwable) { }
+            })
+
+        }
+    }
+
+    fun getMealsByLetter(letter: String) {
+        CoroutineScope(Dispatchers.Default).launch {
+            val call: Call<MealDetailResponse> = MealApi.retrofitService.getMealByLetter(letter)
+
+            call.enqueue(object : Callback<MealDetailResponse> {
+                override fun onResponse(call: Call<MealDetailResponse>?, response: Response<MealDetailResponse>) {
+                    if (!response.isSuccessful) {
+                        return
+                    }
+                    _mealsByLetter.value = response.body()
+                }
+
+                override fun onFailure(call: Call<MealDetailResponse>, t: Throwable) { }
             })
 
         }
