@@ -51,6 +51,17 @@ class CategoriesFragment : Fragment() {
             }
         })
 
+        mBinding.actSwipeRefresh.setColorSchemeResources(R.color.purple_700)
+        mBinding.actSwipeRefresh.setOnRefreshListener { mViewModel.onOrderRefresh() }
+
+        mViewModel.mOnRefresh.observe(viewLifecycleOwner, { isRefreshed ->
+            if(isRefreshed){
+                mViewModel.getRandomMeals()
+                mViewModel.onDataRefreshed()
+                mBinding.actSwipeRefresh.isRefreshing = false
+            }
+        })
+
         return mBinding.root
     }
 

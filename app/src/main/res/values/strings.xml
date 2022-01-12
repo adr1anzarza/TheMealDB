@@ -4,4 +4,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="tv_categoria">Categoría:</string>
     <string name="tv_orígen">Orígen:</string>
+    <string name="tv_nuestra_selecci_n_del_d_a">Nuestra selección del día</string>
+    <string name="nuestros_cat_logos">Nuestros catálogos</string>
+    <string name="tv_nuestros_platillos_de">Nuestros platillos de</string>
 </resources>

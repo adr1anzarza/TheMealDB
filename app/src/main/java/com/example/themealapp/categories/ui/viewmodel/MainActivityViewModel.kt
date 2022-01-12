@@ -18,6 +18,9 @@ class MainActivityViewModel(private val mRepository: MealRepository): ViewModel(
     val navigateToSelectedProperty: LiveData<Category>
         get() = _navigateToSelectedProperty
 
+    private val _onRefreshData = MutableLiveData<Boolean>()
+    var mOnRefresh: LiveData<Boolean> = _onRefreshData
+
     init {
         getCategories()
         getRandomMeals()
@@ -27,7 +30,7 @@ class MainActivityViewModel(private val mRepository: MealRepository): ViewModel(
         mRepository.getCategories()
     }
 
-    private fun getRandomMeals() {
+    fun getRandomMeals() {
         mRepository.getRandomMeals()
     }
 
@@ -37,6 +40,14 @@ class MainActivityViewModel(private val mRepository: MealRepository): ViewModel(
 
     fun displayPropertyDetailsComplete() {
         _navigateToSelectedProperty.value = null
+    }
+
+    fun onOrderRefresh(){
+        _onRefreshData.value = true
+    }
+
+    fun onDataRefreshed(){
+        _onRefreshData.value = false
     }
 
 }
